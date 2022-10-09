@@ -6,7 +6,7 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3036;
@@ -42,5 +42,5 @@ app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => 
-    console.log(`Now listening at ${PORT}.`));
+    console.log(`Now listening at http://localhost:${PORT}.`));
 });
