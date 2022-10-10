@@ -1,14 +1,16 @@
 <!-- Loop over each object in the projects array -->
 {{#each blogs as |blog| }}
-<div class="row mb-4 blog">
-    <div class="">
+<div class="card row mb-4 blog">
+    <div class="col-md-5">
         <p>
+            <a href="/blog/{{blog.id}}">{{blog.name}} <br></a>
             {{blog.description}}
-            <br>
+            
         </p>
     </div>
     <div class="">
         <p>
+            <br>
             Created by {{blog.user.name}} on {{format_date blog.date_created}}
         </p>
     </div>
