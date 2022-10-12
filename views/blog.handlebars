@@ -10,12 +10,22 @@
         <p>
             Created by {{user.name}} on {{format_date date_created}}
         </p>
-        <p>
+        <form action="submit" id="comment-form">
+            <div>
+                <label for="comment-text">Comment: </label>
+                <br>
+                <textarea name="comment-text" id="comment-text" cols="30" rows="10"></textarea>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
 
-        </p>
-        <p>
-            <button class="btn btn-primary">Reply!</button>
-        </p>
     </div>
 </div>
+<script src="./js/logout.js"></script>
+<script src="./js/comment.js"></script>
 {{/if}}
+
+
+
