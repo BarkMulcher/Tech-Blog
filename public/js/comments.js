@@ -1,17 +1,17 @@
 const commentHandler = async (event) => {
     event.preventDefault(); 
-    
+    console.log('Hello');
     const commentTextEl = document.querySelector('#comment-text');
-    const commentBody = commentTextEl.value.trim();
+    const content = commentTextEl.value.trim();
     const blog_id = window.location.pathname.replace('/blog/', '');
 
-    if (!commentBody) {
+    if (!content) {
         alert("You must enter something!")
     } else {
-        const response = await fetch('/commentRoutes',
+        const response = await fetch('/comment/',
         {
             method: "POST",
-            body: JSON.stringify({ commentBody, blog_id }),
+            body: JSON.stringify({ content, blog_id }),
             headers: { "Content-Type": "application/json" }
         });
 
@@ -24,5 +24,5 @@ const commentHandler = async (event) => {
 }
 
 const commentForm = document.querySelector('#comment-form');
-
-form.addEventListener('submit', commentHandler);
+console.log(commentForm);
+commentForm.addEventListener('submit', commentHandler);

@@ -51,13 +51,17 @@ router.get('/blog/:id', async (req, res) => {
     })
 
     const blog = await blogData.get({ plain: true });
+
     const commentData = await commentDataDb.map(comment => comment.get({ plain: true }));
     blogData.comments = commentData;
-
+    console.log('BLOGGGGGGAZ', blog);
+    console.log('Comments', commentData);
     res.render('blog', {
+      commentData,
       ...blog,
       logged_in: req.session.logged_in
     });
+
   } catch (err) {
     res.status(500).json(err);
   }
@@ -73,7 +77,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-
+    console.log(user);
     res.render('dashboard', {
       ...user,
       logged_in: true

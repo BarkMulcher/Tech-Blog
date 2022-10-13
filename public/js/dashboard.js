@@ -1,3 +1,4 @@
+
 const newFormHandler = async (event) => {
     event.preventDefault();
   
@@ -21,27 +22,27 @@ const newFormHandler = async (event) => {
     }
   };
   
-  const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
+  // const delButtonHandler = async (event) => {
+  //   if (event.target.hasAttribute('data-id')) {
+  //     const id = event.target.getAttribute('data-id');
   
-      const response = await fetch(`/api/blogs/${id}`, {
-        method: 'DELETE',
-      });
+  //     const response = await fetch(`/api/blogs/${id}`, {
+  //       method: 'DELETE',
+  //     });
   
-      if (response.ok) {
-        document.location.replace('/dashboard');
-      } else {
-        alert('Failed to delete blog.');
-      }
-    }
-  };
+  //     if (response.ok) {
+  //       document.location.replace('/dashboard');
+  //     } else {
+  //       alert('Failed to delete blog.');
+  //     }
+  //   }
+  // };
   
   document
     .querySelector('.new-blog-form')
     .addEventListener('submit', newFormHandler);
   
-  document
-    .querySelector('.blog-list')
-    .addEventListener('click', delButtonHandler);
+  // document
+  //   .querySelector('.blog-list')
+  //   .addEventListener('click', delButtonHandler);
   
