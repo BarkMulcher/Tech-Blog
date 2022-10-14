@@ -1,6 +1,5 @@
 const commentHandler = async (event) => {
     event.preventDefault(); 
-    console.log('Hello');
     const commentTextEl = document.querySelector('#comment-text');
     const content = commentTextEl.value.trim();
     const blog_id = window.location.pathname.replace('/blog/', '');
@@ -24,5 +23,4 @@ const commentHandler = async (event) => {
 }
 
 const commentForm = document.querySelector('#comment-form');
-console.log(commentForm);
 commentForm.addEventListener('submit', commentHandler);

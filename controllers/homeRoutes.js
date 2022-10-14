@@ -43,7 +43,7 @@ router.get('/blog/:id', async (req, res) => {
       where: {
         blog_id: req.params.id
       },
-      attributes: ["id", "content"],
+      attributes: ["id", "content", "createdAt"],
       include: {
         model: User,
         attributes: ["name"]
@@ -54,7 +54,7 @@ router.get('/blog/:id', async (req, res) => {
 
     const commentData = await commentDataDb.map(comment => comment.get({ plain: true }));
     blogData.comments = commentData;
-    console.log('BLOGGGGGGAZ', blog);
+    console.log('BLOG:', blog);
     console.log('Comments', commentData);
     res.render('blog', {
       commentData,
