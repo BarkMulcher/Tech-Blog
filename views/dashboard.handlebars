@@ -34,6 +34,7 @@
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
+        <a class="btn btn-sm btn-danger" href="/edit/{{blog.id}}">EDIT</a>
       </div>
     </div>
     {{/each}}
@@ -43,5 +44,5 @@
 
 <script src="/js/dashboard.js"></script>
 {{#if blogs.length}}
-<script src="/js/delete.js"></script>
+<script src="/js/editDelete.js"></script>
 {{/if}}
