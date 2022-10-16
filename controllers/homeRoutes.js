@@ -99,4 +99,23 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/edit/:id', withAuth, (req, res) => {
+  Blog.findByPk(req.params.id)
+    .then(response => {
+      if (response) {
+        const blogData = response.get({ plain: true });
+        res.render('editBlogPost', {
+          
+          blogData
+        });
+        
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    })
+})
+
 module.exports = router;

@@ -50,7 +50,7 @@ router.put('/edit/:id', withAuth, async (req, res) => {
         
 
         res.status(200).json(updateBlog);
-        res.redirect('/editBlogPost');
+        res.redirect(`/edit/${id}`);
     } catch (err) {
         res.status(500).json(err);
     }

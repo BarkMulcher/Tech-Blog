@@ -19,10 +19,10 @@ const delButtonHandler = async (event) => {
 const updateBtnHandler = async (event) => {
   event.preventDefault();
 
-  const id = post.getAttribute('data-postId');
+  const id = blog.getElementById('save-button');
 
   const response = await fetch(`/api/blogs/${id}`, {
-    method: "GET",
+    method: "PUT",
     body: JSON.stringify({
       name,
       description
@@ -32,14 +32,12 @@ const updateBtnHandler = async (event) => {
     }
   });
   if (response.ok) {
-    document.location.replace(`/edit/${id}`);
+    document.location.replace(`/dashboard/`);
   } else if (req.session.user_id != req.params.id) {
     res.redirect('/homepage/');
   } else {
     alert(response.statusText);
   }
-
-  
 
 }
 
