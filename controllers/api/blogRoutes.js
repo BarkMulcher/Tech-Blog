@@ -38,19 +38,19 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 // update a blog post
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/edit/:id', withAuth, async (req, res) => {
     try {
-        const updateBlog = await Blog.update({
-            name,
-            content
-        },
+        const updateBlog = await Blog.update(
             {
                 where: {
                     id: req.params.id
                 }
             });
+        
+        
 
         res.status(200).json(updateBlog);
+        res.redirect('/editBlogPost');
     } catch (err) {
         res.status(500).json(err);
     }
