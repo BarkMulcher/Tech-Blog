@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// get blog by id
 router.get('/blog/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -87,7 +88,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-router.get('/edit', async (req, res) => {
+router.get('/edit/:id',  async (req, res) => {
   try {
   const blogData = await Blog.findbyPk(req.session.id, {
     include: [{ model: Blog }]
@@ -96,10 +97,7 @@ router.get('/edit', async (req, res) => {
   const blog = blogData.get({ plain: true });
   console.log(blog);
   // send to /edit/ page
-  res.render('/edit', {
-    ...blog,
-    logged_in: true
-  });
+  res.render('editBlogPost')
   } catch (err) {
     res.status(500).json(err);
   }

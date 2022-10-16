@@ -18,10 +18,10 @@ const delButtonHandler = async (event) => {
 
 const updateBtnHandler = async (event) => {
   event.preventDefault();
-  
+
   const id = post.getAttribute('data-postId');
 
-  const response = await fetch(`/api/blog/${id}`, {
+  const response = await fetch(`/api/blogs/${id}`, {
     method: "GET",
     body: JSON.stringify({
       name,
@@ -32,7 +32,7 @@ const updateBtnHandler = async (event) => {
     }
   });
   if (response.ok) {
-    document.location.replace('/edit/');
+    document.location.replace(`/edit/${id}`);
   } else if (req.session.user_id != req.params.id) {
     res.redirect('/homepage/');
   } else {
